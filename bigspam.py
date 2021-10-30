@@ -1,6 +1,7 @@
 
 from . import *
 from userbot import bot
+
 async def gifspam(e, smex):
     try:
         await e.client(
