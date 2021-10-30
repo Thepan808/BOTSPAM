@@ -41,14 +41,15 @@ async def spam(e):
                     await e.client.send_message(e.chat_id, message)
                     await asyncio.sleep(0.1)
                     
-     elif e.reply_to_msg_id and smex.media:
+    elif e.reply_to_msg_id and smex.media:
+        
         counter = int(legend[0])
         for _ in range(counter):
             async with e.client.action(e.chat_id, "document"):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)
             await asyncio.sleep(0.1)
-     elif e.reply_to_msg_id and smex.text:
+    elif e.reply_to_msg_id and smex.text:
         message = smex.text
         counter = int(legend[0])
         for _ in range(counter):
