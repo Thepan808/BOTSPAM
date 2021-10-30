@@ -340,7 +340,6 @@ async def spam(e):
         username = f"[{c}](tg://user?id={g})"
         counter = int(legend[0])
         for _ in range(counter):
-            
             reply = random.choice(RAID)
             caption = f"{username} {reply}"
             async with e.client.action(e.chat_id, "typing"):
@@ -364,7 +363,7 @@ async def spam(e):
 
         
         
-        
+@tgbot.on(events.NewMessage(incoming=True))
 async def _(event):
     global que
     queue = que.get(event.sender_id)
@@ -443,4 +442,3 @@ async def _(e):
         await e.reply(text, parse_mode=None, link_preview=None )
     else:
         await e.reply(usage, parse_mode=None, link_preview=None )
-    
