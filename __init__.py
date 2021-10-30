@@ -1,23 +1,22 @@
 from userbot import *
 from userbot.Config import Config
 from telethon import TelegramClient
-from decouple import config
 import logging
 import time
 from os import getenv
 
 
 APP_ID = config("APP_ID", default=None, cast=int)
-API_HASH = config("API_HASH", default=None)
-BOT_TOKEN2 = config("BOT_TOKEN2", default=None)
-BOT_TOKEN3 = config("BOT_TOKEN3", default=None)
-BOT_TOKEN4 = config("BOT_TOKEN4", default=None)
-BOT_TOKEN5 = config("BOT_TOKEN5", default=None)
-BOT_TOKEN6 = config("BOT_TOKEN6", default=None)
-BOT_TOKEN7 = config("BOT_TOKEN7", default=None)
-BOT_TOKEN8 = config("BOT_TOKEN8", default=None)
-BOT_TOKEN9 = config("BOT_TOKEN9", default=None)
-BOT_TOKEN10 = config("BOT_TOKEN10", default=None)
+API_HASH = os.environ.get("API_HASH", None)
+BOT_TOKEN2 = os.environ.get("BOT_TOKEN2", None)
+BOT_TOKEN3 = os.environ.get("BOT_TOKEN3", None)
+BOT_TOKEN4 = os.environ.get("BOT_TOKEN4", None)
+BOT_TOKEN5 = os.environ.get("BOT_TOKEN5", None)
+BOT_TOKEN6 = os.environ.get("BOT_TOKEN6", None)
+BOT_TOKEN7 = os.environ.get("BOT_TOKEN7", None)
+BOT_TOKEN8 = os.environ.get("BOT_TOKEN8", None)
+BOT_TOKEN9 = os.environ.get("BOT_TOKEN9", None)
+BOT_TOKEN10 = os.environ.get("BOT_TOKEN10", None)
 
 
 
