@@ -337,21 +337,19 @@ async def spam(e):
             async with e.client.action(e.chat_id, "typing"):
                 await e.client.send_message(e.chat_id, caption)
                 await asyncio.sleep(0.3)
-   elif:
-    e.reply_to_msg_id: 
-    a = await e.get_reply_message()
-    b = await e.client.get_entity(a.sender_id)
-    g = b.id
-    c = b.first_name
-    counter = int(legend[0])
-    username = f"[{c}](tg://user?id={g})"
-    for _ in range(counter):
-        
-        reply = random.choice(RAID)
-        caption = f"{username} {reply}"
-        async with e.client.action(e.chat_id, "typing"):
-            await e.client.send_message(e.chat_id, caption)
-            await asyncio.sleep(0.3)
+    elif e.reply_to_msg_id: 
+        a = await e.get_reply_message()
+        b = await e.client.get_entity(a.sender_id)
+        g = b.id
+        c = b.first_name
+        counter = int(legend[0])
+        username = f"[{c}](tg://user?id={g})"
+        for _ in range(counter):
+            reply = random.choice(RAID)
+            caption = f"{username} {reply}"
+            async with e.client.action(e.chat_id, "typing"):
+                await e.client.send_message(e.chat_id, caption)
+                await asyncio.sleep(0.3)
     else:
         await e.reply(usage, parse_mode=None, link_preview=None )
 
@@ -391,8 +389,7 @@ async def _(e):
             qeue.append(appendable)
             text = "Activated Reply Raid"
             await e.reply(text, parse_mode=None, link_preview=None)
-        elif:
-            e.reply_to_msg_id:
+        elif e.reply_to_msg_id:
             a = await e.get_reply_message()
             b = await e.client.get_entity(a.sender_id)
             g = b.id
@@ -423,8 +420,7 @@ async def _(e):
             pass
         text = "De-Activated Reply Raid"
         await e.reply(text, parse_mode=None, link_preview=None )
-    elif:
-        e.reply_to_msg_id:             
+    elif e.reply_to_msg_id:             
         a = await e.get_reply_message()
         b = await e.client.get_entity(a.sender_id)
         g = b.id
