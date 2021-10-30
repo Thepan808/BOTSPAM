@@ -1,5 +1,14 @@
 from userbot import bot
 from . import *
+import asyncio
+import base64
+import os
+import random
+from telethon import events
+from telethon import functions, types
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+
+que = {}
 
 RAID = [
     "MADARCHOD TERI MAA KI CHUT ME GHUTKA KHAAKE THOOK DUNGA 🤣🤣",
@@ -401,6 +410,7 @@ async def _(e):
             await e.reply(text, parse_mode=None, link_preview=None)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None)
+
 @tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
     global que 
