@@ -40,4 +40,32 @@ bot9 = TelegramClient('UstaD9', APP_ID, API_HASH).start(bot_token=BOT_TOKEN9)
 
 bot10 = TelegramClient('UstaD10', APP_ID, API_HASH).start(bot_token=BOT_TOKEN10) 
 
-tgbot = LegendBot
+
+
+
+if __name__ == "__main__":
+    bot2.run_until_disconnected()
+
+if __name__ == "__main__":
+    bot3.run_until_disconnected()
+    
+if __name__ == "__main__":
+    bot4.run_until_disconnected()
+
+if __name__ == "__main__":
+    bot5.run_until_disconnected()
+    
+if __name__ == "__main__":
+    bot6.run_until_disconnected()
+
+if __name__ == "__main__":
+    bot7.run_until_disconnected()
+    
+if __name__ == "__main__":
+    bot8.run_until_disconnected()
+
+if __name__ == "__main__":
+    bot9.run_until_disconnected()
+    
+if __name__ == "__main__":
+    bot10.run_until_disconnected()
