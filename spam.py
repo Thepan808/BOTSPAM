@@ -8,7 +8,7 @@ from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-@tgbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@tbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 async def spam(e):
     if Config.ABUSE == "ON":
       if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
