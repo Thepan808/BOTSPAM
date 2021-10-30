@@ -1,4 +1,4 @@
-from userbot import bot
+from userbot import bot, tbot
 from userbot.Config import Config
 from . import *
 import asyncio
@@ -9,6 +9,15 @@ from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 @tbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot2.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot3.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot4.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot5.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot6.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot7.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot8.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot9.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+@bot10.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 async def spam(e):
     if Config.ABUSE == "ON":
       if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
