@@ -337,7 +337,7 @@ async def spam(e):
             async with e.client.action(e.chat_id, "typing"):
                 await e.client.send_message(e.chat_id, caption)
                 await asyncio.sleep(0.3)
-     elif e.reply_to_msg_id: 
+    elif e.reply_to_msg_id: 
         a = await e.get_reply_message()
         b = await e.client.get_entity(a.sender_id)
         g = b.id
@@ -371,7 +371,6 @@ async def _(event):
 
 @tgbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
-    
     global que
     if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
         return await e.reply(usage, parse_mode=None, link_preview=None)
@@ -387,7 +386,8 @@ async def _(e):
             qeue.append(appendable)
             text = "Activated Reply Raid"
             await e.reply(text, parse_mode=None, link_preview=None)
-        elif e.reply_to_msg_id:
+        elif:
+            e.reply_to_msg_id:
             a = await e.get_reply_message()
             b = await e.client.get_entity(a.sender_id)
             g = b.id
@@ -399,35 +399,37 @@ async def _(e):
             await e.reply(text, parse_mode=None, link_preview=None)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None)
-tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
-    global que    
-        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
-            return await e.reply(usage, parse_mode=None, link_preview=None )
-        legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-        smex = await e.get_reply_message()
-        if len(e.text) > 12:
-            message = str(legend[0])
-            a = await e.client.get_entity(message)
-            g = a.id
-            try:
-                queue = que.get(g)
-                queue.pop(0)
-            except Exception as f:
-                pass
-            text = "De-Activated Reply Raid"
-            await e.reply(text, parse_mode=None, link_preview=None )
-        elif e.reply_to_msg_id:             
-            a = await e.get_reply_message()
-            b = await e.client.get_entity(a.sender_id)
-            g = b.id
-            try:
-                queue = que.get(g)
-                queue.pop(0)
-            except Exception as f:
-                pass
-            text = "De-Activated Reply Raid"
-            await e.reply(text, parse_mode=None, link_preview=None )
-        else:
-            await e.reply(usage, parse_mode=None, link_preview=None )
+    global que 
+    if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+        return 
+    await e.reply(usage, parse_mode=None, link_preview=None )
+    legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+    smex = await e.get_reply_message()
+    if len(e.text) > 12:
+        message = str(legend[0])
+        a = await e.client.get_entity(message)
+        g = a.id
+        try:
+            queue = que.get(g)
+            queue.pop(0)
+        except Exception as f:
+            pass
+        text = "De-Activated Reply Raid"
+        await e.reply(text, parse_mode=None, link_preview=None )
+    elif:
+        e.reply_to_msg_id:             
+        a = await e.get_reply_message()
+        b = await e.client.get_entity(a.sender_id)
+        g = b.id
+        try:
+            queue = que.get(g)
+            queue.pop(0)
+        except Exception as f:
+            pass
+        text = "De-Activated Reply Raid"
+        await e.reply(text, parse_mode=None, link_preview=None )
+    else:
+        await e.reply(usage, parse_mode=None, link_preview=None )
     
