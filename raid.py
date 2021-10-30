@@ -381,64 +381,60 @@ async def _(event):
 
 
 @tgbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
-async def _(e):
+async def _(event):
     global que
-    if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
-        return await e.reply(usage, parse_mode=None, link_preview=None)
-        legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-        await e.get_reply_message()
-        if len(e.text) > 11:
-            message = str(legend[0])
-            a = await e.client.get_entity(message)
-            g = a.id
-            que[g] = []
-            qeue = que.get(g)
-            appendable = [g]
-            qeue.append(appendable)
-            text = "Activated Reply Raid"
-            await e.reply(text, parse_mode=None, link_preview=None)
-        elif e.reply_to_msg_id:
-            a = await e.get_reply_message()
-            b = await e.client.get_entity(a.sender_id)
-            g = b.id
-            que[g] = []
-            qeue = que.get(g)
-            appendable = [g]
-            qeue.append(appendable)
-            text = "Activated Reply Raid"
-            await e.reply(text, parse_mode=None, link_preview=None)
-        else:
-            await e.reply(usage, parse_mode=None, link_preview=None)
-
-@tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
-async def _(e):
-    global que 
-    if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
-        return 
-    await e.reply(usage, parse_mode=None, link_preview=None )
-    legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-    smex = await e.get_reply_message()
-    if len(e.text) > 12:
-        message = str(legend[0])
-        a = await e.client.get_entity(message)
-        g = a.id
-        try:
-            queue = que.get(g)
-            queue.pop(0)
-        except Exception as f:
-            pass
-        text = "De-Activated Reply Raid"
-        await e.reply(text, parse_mode=None, link_preview=None )
-    elif e.reply_to_msg_id:             
-        a = await e.get_reply_message()
-        b = await e.client.get_entity(a.sender_id)
-        g = b.id
-        try:
-            queue = que.get(g)
-            queue.pop(0)
-        except Exception as f:
-            pass
-        text = "De-Activated Reply Raid"
-        await e.reply(text, parse_mode=None, link_preview=None )
+    if event.fwd_from:
+        return
+    if event.reply_to_msg_id:
+        a = await event.get_reply_message()
+        b = await event.client.get_entity(a.sender_id)
+        e = b.id
+        c = b.first_name
+        username = f"[{c}](tg://user?id={e})"
+        event = await edit_or_reply(event, "Activating Reply Raid")
+        que[e] = []
+        qeue = que.get(e)
+        appendable = [e]
+        qeue.append(appendable)
+        await event.edit(f"STARTING RAID")
     else:
-        await e.reply(usage, parse_mode=None, link_preview=None )
+        user = event.pattern_match.group(1)
+        event = await edit_or_reply(event, "REPLY TO USER")
+        a = await event.client.get_entity(user)
+        e = a.id
+        c = a.first_name
+        username = f"[{c}](tg://user?id={e})"
+        que[e] = []
+        qeue = que.get(e)
+        appendable = [e]
+        qeue.append(appendable)
+        await event.edit(f"DONT BE OVERSMART.")
+
+        
+        
+@tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
+async def _(event):
+    global que
+    if event.fwd_from:
+        return
+    if event.reply_to_msg_id:
+        a = await event.get_reply_message()
+        b = await event.client.get_entity(a.sender_id)
+        e = b.id
+        c = b.first_name
+        username = f"[{c}](tg://user?id={e})"
+        event = await edit_or_reply(event, "Raid is Stoping")
+        queue = que.get(e)
+        queue.pop(0)
+        await event.edit(f"My Owner HAS STOPED RAID NOW U ARE FREE AS BIRD")
+    else:
+        user = event.pattern_match.group(1)
+        event = await edit_or_reply(event, "Reply to user to stop RAID")
+        a = await event.client.get_entity(user)
+        e = a.id
+        c = a.first_name
+        username = f"[{c}](tg://user?id={e})"
+        queue = que.get(e)
+        queue.pop(0)
+        await event.edit(f"STOPPING RAID ")
+        
