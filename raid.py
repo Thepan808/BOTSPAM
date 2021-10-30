@@ -7,6 +7,8 @@ import random
 from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from userbot.utils import edit_ot_reply, eor
+NUMBER = ["0", "1"] 
 
 que = {}
 
