@@ -1,5 +1,4 @@
 from userbot import bot, tbot
-from userbot.Config import Config
 from userbot.spam import bot2
 import asyncio
 import base64
@@ -7,7 +6,7 @@ import os
 from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-
+ABUSE = os.environ.get("ABUSE", None)
 @tbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 @bot2.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 async def spam(e):
