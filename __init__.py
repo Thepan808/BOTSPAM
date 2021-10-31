@@ -5,7 +5,7 @@ import logging
 import time
 from os import getenv
 
-
+"""
 APP_ID = config("APP_ID", default=None, cast=int)
 API_HASH = os.environ.get("API_HASH", None)
 BOT_TOKEN2 = os.environ.get("BOT_TOKEN2", None)
@@ -68,3 +68,4 @@ if __name__ == "__main__":
     
 if __name__ == "__main__":
     bot10.run_until_disconnected()
+"""
