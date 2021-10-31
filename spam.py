@@ -5,7 +5,8 @@ import os
 from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-@tbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
+
+@tbot.on(events.NewMessage(pattern="/spam", func=lambda e: e.sender_id == bot.uid))
 async def spam(e):
     if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
         return await e.reply(usage, parse_mode=None, link_preview=None)
