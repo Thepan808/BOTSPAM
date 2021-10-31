@@ -10,7 +10,7 @@ ABUSE = os.environ.get("ABUSE", None)
 @tbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 @bot2.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 async def spam(e):
-    if Config.ABUSE == "ON":
+    if ABUSE == "ON":
       if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
         return await e.reply(usage, parse_mode=None, link_preview=None)
       legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
