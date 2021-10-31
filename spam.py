@@ -1,6 +1,6 @@
 from userbot import bot, tbot
 from userbot.Config import Config
-from userbot import bot2, bot3, bot4, bot5, bot6, bot7, bo8, bot9, bot10
+from userbot.spam import bot2, bot3, bot4, bot5, bot6, bot7, bo8, bot9, bot10
 from . import *
 import asyncio
 import base64
