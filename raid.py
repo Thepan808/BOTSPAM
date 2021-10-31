@@ -1,4 +1,4 @@
-from userbot import bot
+from userbot import bot, tbot
 from . import *
 import asyncio
 import base64
@@ -327,21 +327,23 @@ RAID = [
     "TERI SEXY BAHEN KI CHUT OP",
 ]
 
-@bot.on(events.NewMessage(pattern="/raid", func=lambda x: x.sender_id == bot.uid))
+
+ABUSE = os.environ.get("ABUSE", "ON")
+@tbot.on(events.NewMessage(pattern="/raid", func=lambda e: e.sender_id == bot.uid))
 async def spam(e):  
-    if e.sender_id in SMEX_USERS:
+    if ABUSE == "ON":
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None )
-        Ustad = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         smex = await e.get_reply_message()
-        if len(Ustad) == 2:
-            message = str(Ustad[1])
+        if len(legend) == 2:
+            message = str(legend[1])
             print(message)
             a = await e.client.get_entity(message)
             g = a.id
             c = a.first_name
             username = f"[{c}](tg://user?id={g})"
-            counter = int(Ustad[0])
+            counter = int(legend[0])
             for _ in range(counter):
                 reply = random.choice(RAID)
                 caption = f"{username} {reply}"
@@ -366,7 +368,7 @@ async def spam(e):
 
         
         
-@tgbot.on(events.NewMessage(incoming=True))
+@tbot.on(events.NewMessage(incoming=True))
 async def _(event):
     global que
     queue = que.get(event.sender_id)
@@ -384,10 +386,10 @@ async def _(event):
 
 
 
-@tgbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
+@tbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
     global que
-    if e.sender_id in SMEX_USERS:
+    if ABUSE == "ON":
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None)
         Ustad = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
@@ -417,10 +419,10 @@ async def _(e):
 
         
         
-@tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
+@tbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
     global que
-    if e.sender_id in SMEX_USERS:
+    if ABUSE == "ON":
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None)
         Ustad = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
