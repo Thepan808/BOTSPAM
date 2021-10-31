@@ -1,4 +1,5 @@
 #All credit goes to LEGEND-OS
+
 import os
 from telethon import TelegramClient, events, functions, types
 api_id = os.environ.get("APP_ID")
