@@ -329,39 +329,40 @@ RAID = [
 
 @bot.on(events.NewMessage(pattern="/raid", func=lambda x: x.sender_id == bot.uid))
 async def spam(e):  
-    if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
-        return await e.reply(parse_mode=None, link_preview=None )
-    legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-    smex = await e.get_reply_message()
-    if len(legend) == 2:
-        message = str(legend[1])
-        print(message)
-        a = await e.client.get_entity(message)
-        g = a.id
-        c = a.first_name
-        username = f"[{c}](tg://user?id={g})"
-        counter = int(legend[0])
-        for _ in range(counter):
-            reply = random.choice(RAID)
-            caption = f"{username} {reply}"
-            async with e.client.action(e.chat_id, "typing"):
-                await e.client.send_message(e.chat_id, caption)
-                await asyncio.sleep(0.3)
-    elif e.reply_to_msg_id: 
-        a = await e.get_reply_message()
-        b = await e.client.get_entity(a.sender_id)
-        g = b.id
-        c = b.first_name
-        counter = int(legend[0])
-        username = f"[{c}](tg://user?id={g})"
-        for _ in range(counter):
-            reply = random.choice(RAID)
-            caption = f"{username} {reply}"
-            async with e.client.action(e.chat_id, "typing"):
-                await e.client.send_message(e.chat_id, caption)
-                await asyncio.sleep(0.3)
-    else:
-        await e.reply(parse_mode=None, link_preview=None )
+    if e.sender_id in SMEX_USERS:
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+            return await e.reply(usage, parse_mode=None, link_preview=None )
+        Ustad = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        smex = await e.get_reply_message()
+        if len(Ustad) == 2:
+            message = str(Ustad[1])
+            print(message)
+            a = await e.client.get_entity(message)
+            g = a.id
+            c = a.first_name
+            username = f"[{c}](tg://user?id={g})"
+            counter = int(Ustad[0])
+            for _ in range(counter):
+                reply = random.choice(RAID)
+                caption = f"{username} {reply}"
+                async with e.client.action(e.chat_id, "typing"):
+                    await e.client.send_message(e.chat_id, caption)
+                    await asyncio.sleep(0.3)
+        elif e.reply_to_msg_id:             
+            a = await e.get_reply_message()
+            b = await e.client.get_entity(a.sender_id)
+            g = b.id
+            c = b.first_name
+            counter = int(Ustad[0])
+            username = f"[{c}](tg://user?id={g})"
+            for _ in range(counter):
+                reply = random.choice(RAID)
+                caption = f"{username} {reply}"
+                async with e.client.action(e.chat_id, "typing"):
+                    await e.client.send_message(e.chat_id, caption)
+                    await asyncio.sleep(0.3)
+        else:
+            await e.reply(usage, parse_mode=None, link_preview=None )
 
         
         
@@ -376,67 +377,73 @@ async def _(event):
     async with event.client.action(event.chat_id, "typing"):
         await event.client.send_message(
             entity=event.chat_id,
-            message="""{}""".format(random.choice(RAID)),
+            message="""{}""".format(random.choice(RRAID)),
             reply_to=event.message.id,
         )
 
 
 
+
 @tgbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
-async def _(event):
+async def _(e):
     global que
-    if event.fwd_from:
-        return
-    if event.reply_to_msg_id:
-        a = await event.get_reply_message()
-        b = await event.client.get_entity(a.sender_id)
-        e = b.id
-        c = b.first_name
-        username = f"[{c}](tg://user?id={e})"
-        event = await edit_or_reply(event, "Activating Reply Raid")
-        que[e] = []
-        qeue = que.get(e)
-        appendable = [e]
-        qeue.append(appendable)
-        await event.edit(f"STARTING RAID")
-    else:
-        user = event.pattern_match.group(1)
-        event = await edit_or_reply(event, "REPLY TO USER")
-        a = await event.client.get_entity(user)
-        e = a.id
-        c = a.first_name
-        username = f"[{c}](tg://user?id={e})"
-        que[e] = []
-        qeue = que.get(e)
-        appendable = [e]
-        qeue.append(appendable)
-        await event.edit(f"DONT BE OVERSMART.")
+    if e.sender_id in SMEX_USERS:
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+            return await e.reply(usage, parse_mode=None, link_preview=None)
+        Ustad = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        await e.get_reply_message()
+        if len(e.text) > 11:
+            message = str(Ustad[0])
+            a = await e.client.get_entity(message)
+            g = a.id
+            que[g] = []
+            qeue = que.get(g)
+            appendable = [g]
+            qeue.append(appendable)
+            text = "Activated Reply Raid"
+            await e.reply(text, parse_mode=None, link_preview=None)
+        elif e.reply_to_msg_id:
+            a = await e.get_reply_message()
+            b = await e.client.get_entity(a.sender_id)
+            g = b.id
+            que[g] = []
+            qeue = que.get(g)
+            appendable = [g]
+            qeue.append(appendable)
+            text = "Activated Reply Raid"
+            await e.reply(text, parse_mode=None, link_preview=None)
+        else:
+            await e.reply(usage, parse_mode=None, link_preview=None)
 
         
         
 @tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
-async def _(event):
+async def _(e):
     global que
-    if event.fwd_from:
-        return
-    if event.reply_to_msg_id:
-        a = await event.get_reply_message()
-        b = await event.client.get_entity(a.sender_id)
-        e = b.id
-        c = b.first_name
-        username = f"[{c}](tg://user?id={e})"
-        event = await edit_or_reply(event, "Raid is Stoping")
-        queue = que.get(e)
-        queue.pop(0)
-        await event.edit(f"My Owner HAS STOPED RAID NOW U ARE FREE AS BIRD")
-    else:
-        user = event.pattern_match.group(1)
-        event = await edit_or_reply(event, "Reply to user to stop RAID")
-        a = await event.client.get_entity(user)
-        e = a.id
-        c = a.first_name
-        username = f"[{c}](tg://user?id={e})"
-        queue = que.get(e)
-        queue.pop(0)
-        await event.edit(f"STOPPING RAID ")
-        
+    if e.sender_id in SMEX_USERS:
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+            return await e.reply(usage, parse_mode=None, link_preview=None)
+        Ustad = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        await e.get_reply_message()
+        if len(e.text) > 11:
+            message = str(Ustad[0])
+            a = await e.client.get_entity(message)
+            g = a.id
+            que[g] = []
+            qeue = que.get(g)
+            appendable = [g]
+            qeue.append(appendable)
+            text = "Activated Reply Raid"
+            await e.reply(text, parse_mode=None, link_preview=None)
+        elif e.reply_to_msg_id:
+            a = await e.get_reply_message()
+            b = await e.client.get_entity(a.sender_id)
+            g = b.id
+            que[g] = []
+            qeue = que.get(g)
+            appendable = [g]
+            qeue.append(appendable)
+            text = "Activated Reply Raid"
+            await e.reply(text, parse_mode=None, link_preview=None)
+        else:
+            await e.reply(usage, parse_mode=None, link_preview=None)
