@@ -386,7 +386,7 @@ async def _(event):
 
 
 
-@tbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="/replyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
     global que
     if ABUSE == "ON":
@@ -419,7 +419,7 @@ async def _(e):
 
         
         
-@tbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="/dreplyraid", func=lambda x: x.sender_id == bot.uid))
 async def _(e):
     global que
     if ABUSE == "ON":
