@@ -1,7 +1,6 @@
 from userbot import bot, tbot
 from userbot.Config import Config
-from userbot.spam import bot2, bot3, bot4, bot5, bot6, bot7, bo8, bot9, bot10
-from . import *
+from userbot.spam import bot2
 import asyncio
 import base64
 import os
@@ -11,14 +10,6 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 @tbot.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 @bot2.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot3.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot4.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot5.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot6.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot7.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot8.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot9.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
-@bot10.on(events.NewMessage(pattern="/spam", func=lambda x: x.is_group))
 async def spam(e):
     if Config.ABUSE == "ON":
       if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
