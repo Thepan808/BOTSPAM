@@ -355,7 +355,7 @@ async def spam(e):
             b = await e.client.get_entity(a.sender_id)
             g = b.id
             c = b.first_name
-            counter = int(Ustad[0])
+            counter = int(legend[0])
             username = f"[{c}](tg://user?id={g})"
             for _ in range(counter):
                 reply = random.choice(RAID)
@@ -435,7 +435,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = "Activated Reply Raid"
+            text = "deactivated Reply Raid"
             await e.reply(text, parse_mode=None, link_preview=None)
         elif e.reply_to_msg_id:
             a = await e.get_reply_message()
@@ -445,7 +445,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = "Activated Reply Raid"
+            text = "deactivated Reply Raid"
             await e.reply(text, parse_mode=None, link_preview=None)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None)
