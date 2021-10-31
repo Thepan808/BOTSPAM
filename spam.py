@@ -1,5 +1,4 @@
 from userbot import bot, tbot
-from userbot.spam import bot2
 import asyncio
 import base64
 import os
